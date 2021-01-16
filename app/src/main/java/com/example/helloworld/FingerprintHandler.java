@@ -1,8 +1,9 @@
 package com.example.helloworld;
 
-
+import com.example.helloworld.MainActivity;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.hardware.fingerprint.FingerprintManager;
 import android.os.Build;
 import android.os.CancellationSignal;
@@ -11,6 +12,8 @@ import android.widget.TextView;
 
 import androidx.annotation.RequiresApi;
 import androidx.core.content.ContextCompat;
+
+import static androidx.core.content.ContextCompat.startActivity;
 
 @RequiresApi(api = Build.VERSION_CODES.M)
 public class FingerprintHandler extends FingerprintManager.AuthenticationCallback {
@@ -41,6 +44,7 @@ public class FingerprintHandler extends FingerprintManager.AuthenticationCallbac
     @Override
     public void onAuthenticationSucceeded(FingerprintManager.AuthenticationResult result) {
         this.update("You can now access the app", true);
+        context.startActivity(new Intent(context, password_page.class));
     }
 
     private void update(String s, boolean b){

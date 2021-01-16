@@ -7,6 +7,7 @@ import androidx.core.content.ContextCompat;
 import android.Manifest;
 import android.annotation.TargetApi;
 import android.app.KeyguardManager;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.hardware.fingerprint.FingerprintManager;
 import android.os.Build;
@@ -84,6 +85,8 @@ public class MainActivity extends AppCompatActivity {
                     FingerprintManager.CryptoObject cryptoObject = new FingerprintManager.CryptoObject(cipher);
                     FingerprintHandler fingerprintHandler = new FingerprintHandler(this);
                     fingerprintHandler.startAuth(fingerprintManager, cryptoObject);
+                    startActivity(new Intent(getApplicationContext(), password_page.class));
+
                 }
             }
 
